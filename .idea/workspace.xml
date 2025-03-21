@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f8d9e83-4609-4c57-a4f3-c5d86b0c4ba5" name="Changes" comment="" />
+    <list default="true" id="3f8d9e83-4609-4c57-a4f3-c5d86b0c4ba5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ReservationView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,7 +34,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "zakicontrolle",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -54,6 +63,7 @@
       <workItem from="1742576074366" duration="69000" />
       <workItem from="1742576198756" duration="577000" />
       <workItem from="1742577256595" duration="948000" />
+      <workItem from="1742586276985" duration="139000" />
     </task>
     <servers />
   </component>
