@@ -1,13 +1,21 @@
 import java.time.LocalDateTime;
 
 public class Reservation {
-    private int code=1; 
-	private String professor;
+    private static int code=1; 
+	private int ReservationCode;
+    private String professor;
+	
     private LocalDateTime date;
     private  int duration;
     private MeetingRoom room;
+	public MeetingRoom getRoom() {
+		return room;
+	}
+	public void setRoom(MeetingRoom room) {
+		this.room = room;
+	}
 	public Reservation(String professor, LocalDateTime date, int duration, MeetingRoom meetingroom) {
-		this.code = this.code++;
+		this.ReservationCode = this.code++;
 		this.professor = professor;
 		this.date = date;
 		this.duration = duration;
