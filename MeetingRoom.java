@@ -3,6 +3,9 @@ public class MeetingRoom {
     private String name;
     private boolean isEmpty;
 	public MeetingRoom(String name) {
+		if(!name.matches("^[A-D]\\d{2}$")) {
+		  throw new IllegalArgumentException("no available room with that name");	
+		}
 		this.name = name;
 		this.isEmpty = true;
 	}
@@ -10,6 +13,9 @@ public class MeetingRoom {
 		return name;
 	}
 	public void setName(String name) {
+		if(!name.matches("^[A-D]\\d{2}$")) {
+			  throw new IllegalArgumentException("no available room with that name");	
+			}
 		this.name = name;
 	}
 	public boolean isEmpty() {
@@ -18,5 +24,4 @@ public class MeetingRoom {
 	public void setEmpty() {
 		this.isEmpty = true;
 	}
-
 }
