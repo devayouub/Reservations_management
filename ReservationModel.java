@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class ReservationModel {
          private ArrayList <Reservation> reservations;
-
+         
 	public ReservationModel() {
-			this.reservations = new ArrayList<>();
+			this.reservations = new ArrayList<Reservation>();
 			}
 
 	public ArrayList<Reservation> getReservations() {
@@ -23,7 +23,5 @@ public class ReservationModel {
 	   public void updateReservation(int index,Reservation reservation) {
 		   reservations.set(index, reservation);
 	   }
-   
-
 
 }
