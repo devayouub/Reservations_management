@@ -13,8 +13,13 @@ public class MeetingRoomModel {
 	public void setMeetingRooms(ArrayList<MeetingRoom> meetingRooms) {
 		MeetingRooms = meetingRooms;
 	}
-	public void addmeetingRoom(MeetingRoom room) {
-		MeetingRooms.add(room);
+	public boolean addmeetingRoom(MeetingRoom room) {
+		for(MeetingRoom temporaryroom : MeetingRooms) {
+			if(temporaryroom.getName().equals(room.getName())) {
+                 return false;
+			}
+		}
+		return MeetingRooms.add(room);
 	   }
 	   public void removemeetingRoom(int index) {
 		   MeetingRooms.remove(index);
