@@ -5,14 +5,14 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
-public class ReservationView {
+public class Reservationview {
 	public JFrame frame;
 	public JButton addbutton1,deletebutton1,addbutton2,deletebutton2;
 	public JTable reservationtable,MeetingRoomsTable;
 	public DefaultTableModel tablemodel1,tablemodel2;
     public TextField professornameField,roomNameField;
     public JLabel professorname,date,duration,roomName,operationsOnReservations,operationsOnMeetingRooms;
-    public ReservationView() {
+    public Reservationview() {
 		//---------------frame creation----------------
 		frame = new JFrame("RESERVATIONS MANAGMENTS");
 		  frame.setSize(900,700);
