@@ -13,7 +13,7 @@ public class ReservationModel {
         }
 
 
-
+ 
     }
    public ArrayList<Reservation> getReservations() {
 		return reservations;
