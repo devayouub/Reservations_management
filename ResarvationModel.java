@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class ReservationModel {
-    ArrayList<Reservation> reservations;
+   private ArrayList<Reservation> reservations;
      public ReservationModel{
         this.reservations = new ArrayList<>();
      }
@@ -15,9 +15,19 @@ public class ReservationModel {
 
 
     }
-    public void DeleteReservation(Reservation reservation) {
-        reservations.remove(reservation);
-    }
+   public ArrayList<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(ArrayList<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+	   public void removeReservation(int index) {
+		   reservations.remove(index);
+	   }
+	   public void updateReservation(int index,Reservation reservation) {
+		   reservations.set(index, reservation);
+	   }
 
     
     }
