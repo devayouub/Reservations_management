@@ -59,7 +59,7 @@ public class Reservationview {
 		    		 		       addbutton2.setEnabled(true);
 		    		 		         addbutton2.setBounds(200,450,150,20);
 		    		 		          deletebutton2 = new JButton("delete room"); 
-		    		 		         deletebutton2.setEnabled(false);
+		    		 		         deletebutton2.setEnabled(true);
 		    		 		           deletebutton2.setBounds(200,500,150,20);
 		    		 			              frame.add(addbutton2);
 		    		 		    		         	     frame.add(deletebutton2);
@@ -143,6 +143,14 @@ public String getSelectedMeetingRoom() {
 	   
 	}
 	return null;
+}
+public int getSelectedMeetingRoom1() {
+	int selectedRow = MeetingRoomsTable.getSelectedRow(); // Get selected row index
+	if (selectedRow != -1) { // Check if a row is selected
+	   return  MeetingRoomsTable.getSelectedRow(); // Get value
+	   
+	}
+	return (Integer) null;
 }
 
 public void ClearFields() {

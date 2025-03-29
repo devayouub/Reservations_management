@@ -39,6 +39,8 @@ public class ReservationController {
 		  String  room = view.getSelectedMeetingRoom();
 		   model.addReservation(new Reservation(proffesor,dateTime,duration,new MeetingRoom(room, false)));
 			view.Settable1Data(model.getReservations());
+			model2.removemeetingRoom(view.getSelectedMeetingRoom1());
+			view.Settable2Data(model2.getMeetingRooms());
 		}
 		
 		
@@ -64,8 +66,8 @@ public class ReservationController {
 			// TODO Auto-generated method stub
 				int selected = view.MeetingRoomsTable.getSelectedRow();
 				if(selected!=-1) {
-					model2.removemeetingRoom(selected);
-					view.Settable2Data(model2.getMeetingRooms());
+					model.removeReservation(selected);
+					view.Settable1Data(model.getReservations());
 					view.ClearFields();
 					
 				}
@@ -77,10 +79,10 @@ public class ReservationController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-					int selected = view.reservationtable.getSelectedRow();
+					int selected = view.MeetingRoomsTable.getSelectedRow();
 					if(selected!=-1) {
-						model.removeReservation(selected);
-						view.Settable1Data(model.getReservations());
+						model2.removemeetingRoom(selected);
+						view.Settable2Data(model2.getMeetingRooms());
 						view.ClearFields();
 						
 					}
