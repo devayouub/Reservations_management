@@ -1,10 +1,16 @@
 import java.awt.TextField;
 import java.text.ParseException;
+import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
-
 public class Reservationview {
 	public JFrame frame;
 	public JButton addbutton1,deletebutton1,addbutton2,deletebutton2;
@@ -12,7 +18,10 @@ public class Reservationview {
 	public DefaultTableModel tablemodel1,tablemodel2;
     public TextField professornameField,roomNameField;
     public JLabel professorname,date,duration,roomName,operationsOnReservations,operationsOnMeetingRooms;
-    public Reservationview() {
+	private  JComboBox<String> durationBox;
+	private  MaskFormatter mask1,mask2;
+	private JFormattedTextField datefield,roomnamefield;
+    public Reservationview() throws ParseException {
 		//---------------frame creation----------------
 		frame = new JFrame("RESERVATIONS MANAGMENTS");
 		  frame.setSize(900,700);
@@ -20,7 +29,7 @@ public class Reservationview {
 		     frame.setLayout(null);
 		      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	   //------------------reservations table creation-----------------
-	       String [] columns1 = { "name of the professor","meeting room","date","Starts at","finishes at"};
+	       String [] columns1 = { "name of the professor","meeting room","date","duration"};
 	       tablemodel1 = new DefaultTableModel(columns1,0);    
 		       reservationtable = new JTable(tablemodel1);
 		          JScrollPane scrollpane1 = new JScrollPane(reservationtable);
@@ -71,43 +80,41 @@ public class Reservationview {
 		         	  
 		         	  
 		         	  
-		         	 try {
-	                      MaskFormatter mask = new MaskFormatter("##-##-#### ##:##");
-	                      mask.setPlaceholderCharacter('_');
-	                      JFormattedTextField formattedField = new JFormattedTextField(mask);
-	                      formattedField.setColumns(10);
-	                      frame.add(formattedField);
-	                      formattedField.setBounds(180,250, 100, 20);
-	                  } catch (ParseException e) {
-	                      e.printStackTrace();
-	                  }
+		         	 
+	                      mask1 = new MaskFormatter("##-##-#### ##:##");
+	                      mask1.setPlaceholderCharacter('_');
+	                       datefield = new JFormattedTextField(mask1);
+	                      datefield.setColumns(10);
+	                      frame.add(datefield);
+	                      datefield.setBounds(180,250, 100, 20);
+	                  
 		         	  
 		         	 String[] durations = {"1 heure", "1 heure 30 min","2 heures","2 heures 30 min"};
-		             JComboBox<String> durationBox = new JComboBox<>(durations);   		         	
+		         	 
+		             durationBox = new JComboBox<>(durations);   		         	
 		         	    durationBox.setBounds(300,250,100,20);
+		         	   frame.add(durationBox);
+		         	    
 		         	    duration = new JLabel(); 
 		         	    duration.setText("set duration");
 		         	        duration.setBounds(300, 181,100, 100);
 		         	        
 		         	       operationsOnMeetingRooms = new JLabel("OPERATIONS ON MEETING ROOMS");
 		         	      operationsOnMeetingRooms.setBounds(90, 400,400, 20);
-		         	       try {
-			                      MaskFormatter mask = new MaskFormatter("U-##");
-			                      mask.setPlaceholderCharacter('_');
-			                      JFormattedTextField formattedField = new JFormattedTextField(mask);
-			                      formattedField.setColumns(10);
-			                      frame.add(formattedField);
-			                      formattedField.setBounds(100,450, 50, 20);
-			                  } catch (ParseException e) {
-			                      e.printStackTrace();
-			                  }
+		         	       
+			                      mask2 = new MaskFormatter("U-##");
+			                      mask2.setPlaceholderCharacter('_');
+			                       roomnamefield = new JFormattedTextField(mask2);
+			                      roomnamefield.setColumns(10);
+			                      frame.add(roomnamefield);
+			                      roomnamefield.setBounds(100,450, 50, 20);
+			                  
 		         	       
 		         	     roomName = new JLabel("Room name:");
 		         	        roomName.setBounds(020, 450, 100, 20);
 		         	        
                                        frame.add(roomName);
 		         	               frame.add(professornameField);
-				         	     frame.add(durationBox);
 				         	   frame.add(duration);
 					      	  frame.add(professorname);
 					          frame.add(date);
@@ -116,5 +123,52 @@ public class Reservationview {
 	 	             
 	frame.setVisible(true);
     }
-    
+    public String getFormattedDate() {
+        return this.datefield.getText();
+        		
+    }
+    public String getFormattedRoomName() {
+    	return this.roomNameField.getText();
+    }
+    public String getSelectedDuration() {
+         return (String) this.durationBox.getSelectedItem();
+    }
+
+
+public String getSelectedMeetingRoom() {
+	int selectedRow = MeetingRoomsTable.getSelectedRow(); // Get selected row index
+	if (selectedRow != -1) { // Check if a row is selected
+	   return (String) MeetingRoomsTable.getValueAt(selectedRow, 0); // Get value
+	   
+	}
+	return null;
 }
+
+public void ClearFields() {
+	  professornameField.setText("");
+}
+
+
+public void Settable1Data(List<Reservation> reservations) {
+	tablemodel1.setRowCount(0);
+	for ( Reservation reservation : reservations) {
+		tablemodel1.addRow(new Object[] {
+				reservation.getProfessor(),reservation.getDate(),reservation.getDuration(),reservation.getRoom()
+		});
+	}
+}
+public void Settable2Data(List<MeetingRoom> meetingRooms) {
+	tablemodel2.setRowCount(0);
+	for ( MeetingRoom meetingRoom : meetingRooms) {
+		tablemodel1.addRow(new Object[] {
+				meetingRoom.getName()
+		});
+	}
+}
+}
+
+
+
+
+
+
