@@ -1,5 +1,6 @@
 import java.awt.TextField;
 import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -16,7 +17,7 @@ public class Reservationview {
 	public JButton addbutton1,deletebutton1,addbutton2,deletebutton2;
 	public JTable reservationtable,MeetingRoomsTable;
 	public DefaultTableModel tablemodel1,tablemodel2;
-    public TextField professornameField,roomNameField;
+    public TextField professornameField;
     public JLabel professorname,date,duration,roomName,operationsOnReservations,operationsOnMeetingRooms;
 	private  JComboBox<String> durationBox;
 	private  MaskFormatter mask1,mask2;
@@ -46,16 +47,16 @@ public class Reservationview {
 		  		            
 		//----------------generating reservations buttons-----------------      
 		        addbutton1 = new JButton("add reservation");
-		        addbutton1.setEnabled(false);
+		        addbutton1.setEnabled(true);
 		         addbutton1.setBounds(20,300,150,20);
 		          deletebutton1 = new JButton("delete reservation"); 
 		           deletebutton1.setBounds(200,300,150,20);
-		           deletebutton1.setEnabled(false);
+		           deletebutton1.setEnabled(true);
 			              frame.add(addbutton1);
 		    		         	     frame.add(deletebutton1);
 		    		         	  //----------------generating MeetingRooms buttons-----------------      
 		    		 		      addbutton2 = new JButton("add room");
-		    		 		       addbutton2.setEnabled(false);
+		    		 		       addbutton2.setEnabled(true);
 		    		 		         addbutton2.setBounds(200,450,150,20);
 		    		 		          deletebutton2 = new JButton("delete room"); 
 		    		 		         deletebutton2.setEnabled(false);
@@ -123,12 +124,12 @@ public class Reservationview {
 	 	             
 	frame.setVisible(true);
     }
-    public String getFormattedDate() {
-        return this.datefield.getText();
+    public JFormattedTextField getFormattedDate() {
+        return this.datefield;
         		
     }
     public String getFormattedRoomName() {
-    	return this.roomNameField.getText();
+    	return this.roomnamefield.getText();
     }
     public String getSelectedDuration() {
          return (String) this.durationBox.getSelectedItem();
@@ -153,14 +154,14 @@ public void Settable1Data(List<Reservation> reservations) {
 	tablemodel1.setRowCount(0);
 	for ( Reservation reservation : reservations) {
 		tablemodel1.addRow(new Object[] {
-				reservation.getProfessor(),reservation.getDate(),reservation.getDuration(),reservation.getRoom()
+				reservation.getProfessor(),reservation.getDate(),reservation.getDuration(),reservation.getRoom().getName()
 		});
 	}
 }
 public void Settable2Data(List<MeetingRoom> meetingRooms) {
 	tablemodel2.setRowCount(0);
 	for ( MeetingRoom meetingRoom : meetingRooms) {
-		tablemodel1.addRow(new Object[] {
+		tablemodel2.addRow(new Object[] {
 				meetingRoom.getName()
 		});
 	}

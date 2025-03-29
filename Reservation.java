@@ -6,7 +6,7 @@ public class Reservation {
     private String professor;
 	
     private LocalDateTime date;
-    private  int duration;
+    private  String duration;
     private MeetingRoom room;
 	public MeetingRoom getRoom() {
 		return room;
@@ -14,7 +14,7 @@ public class Reservation {
 	public void setRoom(MeetingRoom room) {
 		this.room = room;
 	}
-	public Reservation(String professor, LocalDateTime date, int duration, MeetingRoom meetingroom) {
+	public Reservation(String professor, LocalDateTime date, String duration, MeetingRoom meetingroom) {
 		this.ReservationCode = this.code++;
 		this.professor = professor;
 		this.date = date;
@@ -39,10 +39,10 @@ public class Reservation {
 	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
-	public int getDuration() {
+	public String getDuration() {
 		return duration;
 	}
-	public void setDuration(int duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 

@@ -9,7 +9,7 @@ public class MeetingRoom {
 		this.isEmpty = isEmpty;
 	}
 	public MeetingRoom(String name) {
-		if(!name.matches("^[A-D]\\d{2}$")) {
+		if(!name.matches("^[A-D]-\\d{2}$")) {
 		  throw new IllegalArgumentException("no available room with that name");	
 		}
 		this.name = name;
