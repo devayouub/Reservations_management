@@ -162,7 +162,7 @@ public void Settable1Data(List<Reservation> reservations) {
 	tablemodel1.setRowCount(0);
 	for ( Reservation reservation : reservations) {
 		tablemodel1.addRow(new Object[] {
-				reservation.getProfessor(),reservation.getDate(),reservation.getDuration(),reservation.getRoom().getName()
+				reservation.getProfessor(),reservation.getRoom().getName(),reservation.getDate(),reservation.getDuration()
 		});
 	}
 }
