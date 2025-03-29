@@ -42,7 +42,38 @@ public class ReservationdbManagement {
         }
     }
 
+    public static boolean addReservation(String codeSalle, String employeeName, Timestamp startTime, int duration, String reservationCode) throws SQLException {
+        String query = "INSERT INTO Reservations (code_salle, employee_name, start_time, duration, reservation_code) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, codeSalle);
+            stmt.setString(2, employeeName);
+            stmt.setTimestamp(3, startTime);
+            stmt.setInt(4, duration);
+            stmt.setString(5, reservationCode);
+            return stmt.executeUpdate() > 0;
+        }
+    }
 
+    public static boolean removeReservation(String reservationCode) throws SQLException {
+        String query = "DELETE FROM Reservations WHERE reservation_code = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, reservationCode);
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
+    public static boolean updateReservation(String reservationCode, Timestamp newStartTime, int newDuration) throws SQLException {
+        String query = "UPDATE Reservations SET start_time = ?, duration = ? WHERE reservation_code = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setTimestamp(1, newStartTime);
+            stmt.setInt(2, newDuration);
+            stmt.setString(3, reservationCode);
+            return stmt.executeUpdate() > 0;
+        }
+    }
 
 
 }
