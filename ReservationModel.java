@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public class ReservationModel {
    private ArrayList<Reservation> reservations;
-     public ReservationModel{
+    public ReservationModel() {
+
         this.reservations = new ArrayList<>();
      }
     public void addReservation(Reservation reservation) {
@@ -31,5 +32,3 @@ public class ReservationModel {
 
     
     }
-
-}
